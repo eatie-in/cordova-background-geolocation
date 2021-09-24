@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="cordova-background-geolocation" version="0.0.1"
+    xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>cordova-background-geolocation</name>
+    <js-module name="backgroundGeolocation" src="www/backgroundGeolocation.js">
+        <clobbers target="backgroundGeolocation" />
+    </js-module>
+    <platform name="android">
+
+        <!-- framework -->
+        <preference name="GOOGLE_PLAY_SERVICES_VERSION" default="18+"/>
+        <preference name="ANDROIDX_VERSION" default="1.+" />
+        <preference name="OKHTTP_VERSION" default="4.+" />
+        <framework src="androidx.appcompat:appcompat:$ANDROIDX_VERSION" />
+        <framework src="androidx.legacy:legacy-support-v4:$ANDROIDX_VERSION" />
+        <framework src="com.squareup.okhttp3:okhttp:$OKHTTP_VERSION" />
+        <framework src="com.google.android.gms:play-services-location:$GOOGLE_PLAY_SERVICES_VERSION" />
+
+        <!-- permissions -->
+        <config-file parent="/manifest" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.INTERNET"/>
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+        </config-file>
+
+        <config-file parent="/*" target="res/xml/config.xml">
+            <feature name="BackgroundGeolocation">
+                <param name="android-package" value="in.eatie.backgroundgeolocation.BackgroundGeolocation" />
+                <!-- loads without calling -->
+                <param name="onload" value="true" />
+            </feature>
+        </config-file>
+
+        <config-file parent="/manifest/application" target="AndroidManifest.xml">
+            <receiver android:name="in.eatie.backgroundgeolocation.LocationBroadcastReceiver" android:exported="true">
+                <intent-filter>
+                    <action android:name="in.eatie.backgroundgeolocation.LocationUpdatesBroadcastReceiver.ACTION_PROCESS_UPDATES" />
+                </intent-filter>
+            </receiver>
+        </config-file>
+        <source-file src="src/android/BackgroundGeolocation.java" target-dir="src/in/eatie/backgroundgeolocation" />
+        <source-file src="src/android/LocationBroadcastReceiver.java" target-dir="src/in/eatie/backgroundgeolocation" />
+        <source-file src="src/android/Utils.java" target-dir="src/in/eatie/backgroundgeolocation" />
+        <source-file src="src/android/OkHTTP.java" target-dir="src/in/eatie/backgroundgeolocation" />
+    </platform>
+</plugin>

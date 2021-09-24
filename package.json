@@ -1,0 +1,14 @@
+{
+  "name": "cordova-background-geolocation",
+  "version": "0.0.1",
+  "description": "android background geolocation",
+  "cordova": {
+    "id": "cordova-background-geolocation",
+    "platforms": []
+  },
+  "keywords": [
+    "ecosystem:cordova"
+  ],
+  "author": "",
+  "license": "ISC"
+}
