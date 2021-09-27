@@ -15,9 +15,7 @@ import android.graphics.Color;
 import android.location.Location;
 import android.net.Uri;
 import android.os.Build;
-import android.preference.PreferenceManager;
 import android.provider.Settings;
-import android.util.Log;
 
 import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
@@ -27,7 +25,7 @@ import java.text.DateFormat;
 import java.util.Date;
 import java.util.List;
 
-import io.ionic.starter.BuildConfig;
+
 
 /**
  * Utility methods used in this sample.
@@ -154,7 +152,7 @@ class Utils {
             intent.setAction(
                     Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
             Uri uri = Uri.fromParts("package",
-                    BuildConfig.APPLICATION_ID, null);
+                    activity.getPackageName(), null);
             intent.setData(uri);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             activity.startActivity(intent);

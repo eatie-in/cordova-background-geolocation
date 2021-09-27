@@ -1,25 +1,16 @@
 package in.eatie.backgroundgeolocation;
 
 
-import android.Manifest;
-import android.annotation.SuppressLint;
+
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
-import android.location.Location;
-import android.net.Uri;
-import android.os.Build;
-import android.preference.PreferenceManager;
-import android.provider.Settings;
+
 import android.util.Log;
-import android.view.View;
 
 import androidx.annotation.NonNull;
-import androidx.annotation.RequiresApi;
-import androidx.core.app.ActivityCompat;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationRequest;
@@ -35,8 +26,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import io.ionic.starter.BuildConfig;
-import io.ionic.starter.R;
 
 /**
  * This class echoes a string called from JavaScript.
